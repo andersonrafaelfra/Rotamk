@@ -18,7 +18,7 @@ jobs:
       url: ${{ steps.d.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir _site && unzip -o rotamk-github.zip -d _site && ls _site
+      - run: mkdir _site && for z in *.zip; do unzip -o "$z" -d _site; done && ls _site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
